@@ -24,9 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2017103000;
+$plugin->version   = 2017120400;
 $plugin->requires  = 2017050500;
-$plugin->release  = 'Thème EADUM v1.0.2';
+$plugin->release  = 'Thème EADUM v1.0.3';
 $plugin->component = 'theme_eadumboost';
 
 // This is a list of plugins, this plugin depends on (and their versions).
