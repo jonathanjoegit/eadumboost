@@ -77,7 +77,7 @@ $string['txthome2'] = '<H3>Nos formations :</H3>
                         <br /><br />
 
 
-                        <a href="http://www.univ-lemans.fr/fr/formation/enseignement_a_distance_ead.html">Consultez ici l\'ensemble des formations disponibles en cliquant ici.</a>
+                        <a href="http://www.univ-lemans.fr/fr/formation/se-former-a-distance.html">Consultez ici l\'ensemble des formations disponibles en cliquant ici.</a>
 
     ';
 $string['txthome3'] = '<H3>Assistance :</H3>
