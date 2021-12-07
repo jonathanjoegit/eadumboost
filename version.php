@@ -15,21 +15,24 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *  THEME EADUM - Le Mans Université
+ *  Version
  *
  * @package    theme_eadumboost
- * @copyright  2017 Jonathan J. - Le Mans Université
+ * @copyright  2020 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2017120400;
-$plugin->requires  = 2017050500;
-$plugin->release  = 'Thème EADUM v1.0.3';
+$plugin->version   = 2020071700; // JUL 17th 2020
+$plugin->requires  = 2019070900; // This is the version of Moodle this plugin requires.
 $plugin->component = 'theme_eadumboost';
+$plugin->release  = 'Thème EADUMBOOST v1.1.0';
 
-// This is a list of plugins, this plugin depends on (and their versions).
-$plugin->dependencies = [
-  'theme_boost' => '2017051500'
-];
+
+
+/*
+* TIP:
+* When upgrade think about desintall if problem.
+* When changing name of plugin, think about renaming the lang files.
+*/
