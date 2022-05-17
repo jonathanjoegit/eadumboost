@@ -52,6 +52,8 @@ function theme_eadumboost_get_main_scss_content($theme) {
         $custom .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_preproduction.scss');
     } else if ($value == "Test") {
         $custom .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
+    } else if ($value == "Test-annualisation") {
+        $custom .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_testannualisation.scss');
     }
 
     // Combine them together.
