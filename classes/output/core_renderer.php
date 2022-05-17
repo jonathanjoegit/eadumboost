@@ -40,7 +40,7 @@ defined('MOODLE_INTERNAL') || die;
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
  * @package    theme_eadumboost
- * @copyright  2020 Jonathan J.
+ * @copyright  2022 Jonathan J.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class core_renderer extends \theme_boost\output\core_renderer {
