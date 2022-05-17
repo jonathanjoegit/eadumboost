@@ -3,7 +3,7 @@
 
 .navbar {
     border-bottom: $navbarBorderSize solid $navbarBorderColor;
-    background-color: $navbarBackgroundColor;
+    background-color: $navbarBackgroundColor !important;
 
     .logo img {
         width: auto;
@@ -30,9 +30,15 @@
     }
     .dropdown-item:hover {
         background-color: $navbarHoverColor;
+        color: $blackText !important;
+
     }
     /* Notification, it was white with background white. */
     .notification a {
         color: $blackText !important;
+    }
+    /* Search bar : */
+    .simplesearchform .collapse {
+        background-color: $navdrawerBackground;
     }
 }

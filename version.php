@@ -18,18 +18,22 @@
  *  Version
  *
  * @package    theme_eadumboost
- * @copyright  2020 Jonathan J. - Le Mans Université
+ * @copyright  2022 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2020071700; // JUL 17th 2020
-$plugin->requires  = 2019070900; // This is the version of Moodle this plugin requires.
+// Version (YYYYMMDDrr where rr is the release number)
+$plugin->version   = 2022051501;
+
+$plugin->requires  = 2020110900; // require moodle 3.10
 $plugin->component = 'theme_eadumboost';
-$plugin->release  = 'Thème EADUMBOOST v1.1.0';
+$plugin->release  = 'Theme EADUMBOOST v2 Moodle 3.10';
 
-
+$plugin->dependencies = array(
+    'theme_boost'  => 2020110900
+);
 
 /*
 * TIP:

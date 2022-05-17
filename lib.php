@@ -18,11 +18,13 @@
  * Theme functions.
  *
  * @package    theme_eadumboost
- * @copyright  2020 Jonathan J. - Le Mans Université
+ * @copyright  2022 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
+
+require_once($CFG->dirroot.'/theme/boost/lib.php');
 
 
 /**
@@ -34,35 +36,28 @@ defined('MOODLE_INTERNAL') || die();
 function theme_eadumboost_get_main_scss_content($theme) {
     global $CFG;
 
-    $scss = '';
-    $filename = !empty($theme->settings->preset) ? $theme->settings->preset : null;
-    $fs = get_file_storage();
-
-    $context = context_system::instance();
-    if ($filename == 'default.scss') {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
-    } else if ($filename == 'plain.scss') {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/plain.scss');
-    } else if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_boost', 'preset', 0, '/', $filename))) {
-        $scss .= $presetfile->get_content();
-    } else {
-        // Safety fallback - maybe new installs etc.
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
+    // get the main css of the parent theme_boost
+    static $boosttheme = null;
+    if (empty($boosttheme)) {
+        $boosttheme = theme_config::load('boost'); // Needs to be the Boost theme so that we get its settings.
     }
+    $scss = theme_boost_get_main_scss_content($boosttheme);
 
     // Add theme custom scss.
-    $post = file_get_contents($CFG->themedir . '/eadumboost/scss/styles.scss');
+    $custom = file_get_contents($CFG->themedir . '/eadumboost/scss/styles.scss');
 
     // Add custom styles for Test & Pre-production environment (theme setting).
     $value = $theme->settings->platform_env;
     if ($value == "Pre-Production") {
-        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_preproduction.scss');
+        $custom .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_preproduction.scss');
     } else if ($value == "Test") {
-        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
+        $custom .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
+    } else if ($value == "Test-annualisation") {
+        $custom .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_testannualisation.scss');
     }
 
     // Combine them together.
-    return $scss . "\n" . $post;
+    return $scss . "\n" . $custom;
 }
 
 

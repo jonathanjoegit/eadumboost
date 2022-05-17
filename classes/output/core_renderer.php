@@ -40,7 +40,7 @@ defined('MOODLE_INTERNAL') || die;
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
  * @package    theme_eadumboost
- * @copyright  2020 Jonathan J.
+ * @copyright  2022 Jonathan J.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class core_renderer extends \theme_boost\output\core_renderer {
@@ -68,7 +68,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             // Add course search for manager and admin (if you have the good capability).
             if (has_capability('moodle/course:view', $this->page->context)
             && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
-                $this->umboost_get_searchcourses_for_custom_menu($custommenu);
+                $this->umboost_get_courselist_for_custom_menu($custommenu);
             }
             // Add custom menus (MAIL, Help, ...).
             // NO DISPLAYED ANY MORE $this->umboost_get_custom_items_for_custom_menu($custommenu);.
@@ -137,11 +137,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * add searchcourses to custom menu.
+     * add course list to custom menu.
      */
-    protected function umboost_get_searchcourses_for_custom_menu( $custommenu) {
+    protected function umboost_get_courselist_for_custom_menu( $custommenu) {
         // Fetch courses.
-        $branchtitle = $branchlabel = get_string('recherchecours', 'theme_eadumboost');
+        $branchtitle = $branchlabel = get_string('courselist', 'theme_eadumboost');
         $branchurl = new moodle_url('/course/index.php');
         $branchsort = 2;
 
@@ -240,7 +240,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $header->headeractions = $PAGE->get_header_actions();
 
         /* ADD JJUPIN: add "edit mode" in course. */
-        $header->editbutton = $this->umboost_edit_button();
+        //$header->editbutton = $this->umboost_edit_button();
         /* ADD JJUPIN: eadumboost template */
         return $this->render_from_template('theme_eadumboost/full_header', $header);
     }
@@ -251,7 +251,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      *
      * @return string the editing button
      */
-    public function umboost_edit_button() {
+   /* public function umboost_edit_button() {
         global $PAGE, $COURSE;
 
         if (!$PAGE->user_allowed_editing() || $COURSE->id <= 1) {
@@ -281,7 +281,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 'title' => $title,
             ));
         }
-    }
+    }*/
 
 
     /**
@@ -354,6 +354,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
     /**
      * Add custom items to the course settings menu.
+     * - participation
+     * - enrolmentmethods
+     * - questionbank
      */
     protected function umboost_get_custom_action_menu_for_course_header( $menu) {
 
