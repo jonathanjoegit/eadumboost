@@ -48,7 +48,7 @@ $string['assistanceTP'] = 'Assistance';
 $string['FAQ'] = 'FAQ';
 $string['espaceformation'] = 'Staff training';
 $string['creerespacecours'] = 'New course creation form';
-$string['recherchecours'] = 'Search courses';
+$string['courselist'] = 'Course list';
 $string['mail'] = 'Mailbox LMU';
 
 /* Connections anonymes. */
