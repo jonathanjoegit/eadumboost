@@ -59,21 +59,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $custommenu = new custom_menu($custommenuitems, current_language());
 
-        // Eadumboost custom menu.
-        if (isloggedin() && !isguestuser() ) {
+        // Add dahsboard and my courses access.
+        $this->umboost_get_dashboard_for_custom_menu($custommenu);
 
-            // Add dahsboard and my courses access.
-            $this->umboost_get_dashboard_for_custom_menu($custommenu);
-
-            // Add course search for manager and admin (if you have the good capability).
-            if (has_capability('moodle/course:view', $this->page->context)
-            && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
-                $this->umboost_get_courselist_for_custom_menu($custommenu);
-            }
-            // Add custom menus (MAIL, Help, ...).
-            // NO DISPLAYED ANY MORE $this->umboost_get_custom_items_for_custom_menu($custommenu);.
-
+        // Add course list for manager and admin (if you have the good capability).
+        if (has_capability('moodle/course:view', $this->page->context)
+        && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
+            $this->umboost_get_courselist_for_custom_menu($custommenu);
         }
+
         return $this->render_custom_menu($custommenu);
     }
 
@@ -91,53 +85,30 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * Add dashboard and my courses access to custom menu.
+     * Add dashboard and my courses access to custom menu (all users).
      */
-    protected function umboost_get_dashboard_for_custom_menu($custommenu) {
+    protected function umboost_get_dashboard_for_custom_menu(custom_menu $menu) {
         global $CFG;
 
-        $branchtitle = $branchlabel = get_string('myhome');
-        $branchurl = new moodle_url('');
-        $branchsort = 1;
+        $mycourses = $this->page->navigation->get('mycourses');
 
-        $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+        if (isloggedin() && $mycourses && $mycourses->has_children()) {
+            $branchlabel = get_string('myhome');
+            $branchurl   = new moodle_url('/course/index.php');
+            $branchtitle = $branchlabel;
+            $branchsort  = 1;
 
-        $hometext = get_string('myhome');
-        $homelabel = html_writer::tag('i', '', array('class' => 'fa fa-home')).html_writer::tag('span', ' '.$hometext);
-        $branch->add($homelabel, new moodle_url('/my/index.php'), $hometext);
+            $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
-        // Get 'My courses' sort preference from admin config.
-        if (!$sortorder = $CFG->navsortmycoursessort) {
-            $sortorder = 'sortorder';
-        }
-
-        // Retrieve courses and add them to the menu when they are visible.
-        $numcourses = 0;
-
-        if ($courses = enrol_get_my_courses(null, $sortorder . ' ASC')) {
-            foreach ($courses as $course) {
-                if ($course->visible) {
-                    $branch->add('<span class="fa fa-graduation-cap"></span>'.format_string($course->fullname),
-                    new moodle_url('/course/view.php?id=' . $course->id), format_string($course->shortname));
-                    $numcourses += 1;
-                } else if (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
-                    $branchtitle = format_string($course->shortname);
-                    $branchlabel = '<span class="dimmed_text">'.format_string($course->fullname) . '</span>';
-                    $branchurl = new moodle_url('/course/view.php', array('id' => $course->id));
-                    $branch->add($branchlabel, $branchurl, $branchtitle);
-                    $numcourses += 1;
-                }
+            foreach ($mycourses->children as $coursenode) {
+                $branch->add($coursenode->get_content(), $coursenode->action, $coursenode->get_title());
             }
         }
-        if ($numcourses == 0 || empty($courses)) {
-            $noenrolments = get_string('noenrolments', 'theme_eadumboost');
-            $branch->add('<em>' . $noenrolments . '</em>', new moodle_url(''), $noenrolments);
-        }
-
     }
+    
 
     /**
-     * add course list to custom menu.
+     * add course list to custom menu (for admin).
      */
     protected function umboost_get_courselist_for_custom_menu( $custommenu) {
         // Fetch courses.
@@ -149,28 +120,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
 
-    /**
-     * add customs items (UM MAIL, help, ...)
-     */
-    protected function umboost_get_custom_items_for_custom_menu( $custommenu) {
-
-        // Mail.
-        $branchtitle = $branchlabel = get_string('mail', 'theme_eadumboost');
-        $branchurl = new moodle_url('http://webmail.univ-lemans.fr/');
-        $branchsort = 3;
-        $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
-
-        // Aide.
-        $branchtitle = $branchlabel = get_string('support', 'theme_eadumboost');
-        $branchurl = new moodle_url('');
-        $branchsort = 4;
-        $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
-        // Sub branches.
-        $sbranchtitle = $sbranchlabel = get_string('assistanceEtu', 'theme_eadumboost');
-        $sbranchurl = new moodle_url('/um_apps/faq/faq-connexion.html');
-        $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
-
-    }
 
 
     /**
