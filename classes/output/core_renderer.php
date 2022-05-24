@@ -166,7 +166,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @todo: CLEAN OU Documenter la fonction + utiliser son parent.
      * @return string HTML to display the main header.
      */
-   /* public function full_header() {
+    /* public function full_header() {
         global $PAGE;
 
         if ($PAGE->include_region_main_settings_in_header_actions() && !$PAGE->blocks->is_block_present('settings')) {
