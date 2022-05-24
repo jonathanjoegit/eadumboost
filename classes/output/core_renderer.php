@@ -213,10 +213,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
     /** Overriding! (check moodle 3.8 ok)
      * Wrapper for header elements => QUEST CE QUON FAIT ?
      *
-     * @todo: Documenter la fonction + utiliser son parent.
+     * @todo: CLEAN OU Documenter la fonction + utiliser son parent.
      * @return string HTML to display the main header.
      */
-    public function full_header() {
+   /* public function full_header() {
         global $PAGE;
 
         if ($PAGE->include_region_main_settings_in_header_actions() && !$PAGE->blocks->is_block_present('settings')) {
@@ -239,12 +239,12 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $header->courseheader = $this->course_header();
         $header->headeractions = $PAGE->get_header_actions();
 
-        /* ADD JJUPIN: add "edit mode" in course. */
+        // ADD JJUPIN: add "edit mode" in course. 
         //$header->editbutton = $this->umboost_edit_button();
-        /* ADD JJUPIN: eadumboost template */
+        // ADD JJUPIN: eadumboost template ATTENTION TEMPLATE SUPP DE LA NOUVELLE VERSION !!! 
         return $this->render_from_template('theme_eadumboost/full_header', $header);
     }
-
+	*/
 
     /**
      * Add editing button in a course
