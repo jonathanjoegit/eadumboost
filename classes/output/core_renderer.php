@@ -93,9 +93,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $mycourses = $this->page->navigation->get('mycourses');
 
         if (isloggedin() && $mycourses && $mycourses->has_children()) {
+            $branchtitle = "dashboard"; // Title that we can use with CSS.
             $branchlabel = get_string('myhome');
             $branchurl   = new moodle_url('/course/index.php');
-            $branchtitle = $branchlabel;
             $branchsort  = 1;
 
             $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
@@ -112,7 +112,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     protected function umboost_get_courselist_for_custom_menu( $custommenu) {
         // Fetch courses.
-        $branchtitle = $branchlabel = get_string('courselist', 'theme_eadumboost');
+        $branchtitle = "courselist"; // Title that we can use with CSS.
+        $branchlabel = get_string('courselist', 'theme_eadumboost');
         $branchurl = new moodle_url('/course/index.php');
         $branchsort = 2;
 
