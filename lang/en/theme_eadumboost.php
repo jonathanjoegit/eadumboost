@@ -39,8 +39,6 @@ $string['connect-angers-text'] = 'Users registered at the University of Angers, 
 $string['connect-angers-button'] = 'Log in with your account <i>Université Angers</i>';
 
 
-
-
 /* custom UMTICE. */
 $string['noenrolments'] = 'No enrolments';
 $string['assistanceEns'] = 'Staff helpdesk';
@@ -150,4 +148,4 @@ Since 2001, Le Mans Université offers over 20 distance-learning qualifications 
     $string['platform_env'] = 'Platform environment';
     $string['platform_env_desc'] = 'Platform environment selection. This selection changes the theme logo "EADUM" in "Test" and "Pre-production" to show it\'s not the "Production" platform';
     $string['title_angers_users'] = 'Connection with Angers';
-    $string['text_angers_user'] = 'Show a block for Angers Université users in the login page?';
+    $string['text_angers_user'] = 'Show a block (or not) for Angers Université users in the login page';

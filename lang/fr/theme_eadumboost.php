@@ -165,5 +165,5 @@ $string['generalsettings'] = 'Paramètres';
 $string['platform_env'] = 'Environnement';
 $string['platform_env_desc'] = 'Sélection de l\'environnement de la plate-forme. Cette sélection change le logo du thème pour montrer qu\'il ne s\'agit pas de la plateforme "Production".';
 $string['title_angers_users'] = 'Connexion avec Angers';
-$string['text_angers_user'] = 'Afficher un bloc pour les utilisateurs d\'Angers Université dans la page de connexion ?';
+$string['text_angers_user'] = 'Afficher un bloc (ou non) pour les utilisateurs d\'Angers Université dans la page de connexion';
 
