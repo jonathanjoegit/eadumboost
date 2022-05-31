@@ -145,7 +145,7 @@ Since 2001, Le Mans Université offers over 20 distance-learning qualifications 
     Remember to update your own Web browser.  You can also access the courses directly on your tablet.
     ';
     // Admin.
-    $string['configtitle'] = 'Config title';
+    $string['configtitle'] = 'EADUMBOOST';
     $string['generalsettings'] = 'General Settings';
     $string['platform_env'] = 'Platform environment';
     $string['platform_env_desc'] = 'Platform environment selection. This selection changes the theme logo "EADUM" in "Test" and "Pre-production" to show it\'s not the "Production" platform';

@@ -39,14 +39,6 @@ $string['connect-angers-text'] = 'Utilisateurs inscrits à l\'Université d\'Ang
 $string['connect-angers-button'] = 'Se connecter avec votre compte <i>Université Angers</i>';
 
 
-
-
-
-
-
-
-
-
 /* Custom UMTICE. */
 $string['noenrolments'] = 'Aucun cours';
 $string['assistanceEns'] = 'Assistance enseignant';
@@ -166,3 +158,12 @@ Vous êtes ou devenez étudiant à distance et vous rencontrez une difficulté ?
 $string['txthome4'] = '<H3>Accessibilité :</H3>
 Ce site web est optimisé pour les dernières mises à jour des navigateurs web Firefox et Chrome.
 Pensez à mettre à jour votre navigateur. Vous pouvez également y accéder depuis votre tablette et votre mobile. repri';
+
+// Admin.
+$string['configtitle'] = 'EADUMBOOST';
+$string['generalsettings'] = 'Paramètres';
+$string['platform_env'] = 'Environnement';
+$string['platform_env_desc'] = 'Sélection de l\'environnement de la plate-forme. Cette sélection change le logo du thème pour montrer qu\'il ne s\'agit pas de la plateforme "Production".';
+$string['title_angers_users'] = 'Connexion avec Angers';
+$string['text_angers_user'] = 'Afficher un bloc pour les utilisateurs d\'Angers Université dans la page de connexion ?';
+
