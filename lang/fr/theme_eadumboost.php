@@ -18,13 +18,13 @@
  * Strings for theme, language 'fr'
  *
  * @package    theme_eadumboost
- * @copyright  2020 Jonathan J. - Le Mans Université
+ * @copyright  2022 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 $string['pluginname'] = 'EADUMBOOST';
 $string['choosereadme'] = 'Theme EADUMBOOST is a child theme of Boost for Le Mans Université';
-$string['region-side-pre'] = 'region-side-pre';
+$string['configtitle'] = 'EADUMBOOST';
 
 /* LOGIN. */
 $string['connect-form-welcome'] = 'Bienvenue !';
@@ -160,7 +160,6 @@ Ce site web est optimisé pour les dernières mises à jour des navigateurs web 
 Pensez à mettre à jour votre navigateur. Vous pouvez également y accéder depuis votre tablette et votre mobile. repri';
 
 // Admin.
-$string['configtitle'] = 'EADUMBOOST';
 $string['generalsettings'] = 'Paramètres';
 $string['platform_env'] = 'Environnement';
 $string['platform_env_desc'] = 'Sélection de l\'environnement de la plate-forme. Cette sélection change le logo du thème pour montrer qu\'il ne s\'agit pas de la plateforme "Production".';
