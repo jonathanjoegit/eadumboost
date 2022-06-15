@@ -149,3 +149,4 @@ $string['platform_env'] = 'Platform environment';
 $string['platform_env_desc'] = 'Platform environment selection. This selection changes the theme logo "EADUM" in "Test" and "Pre-production" to show it\'s not the "Production" platform';
 $string['title_angers_users'] = 'Connection with Angers';
 $string['text_angers_user'] = 'Show a block (or not) for Angers Université users in the login page';
+$string['course_list_navbar'] = 'Display the "course list" in the navbar for all users or managers (UMTICE: everybody, EADUM: manager)';

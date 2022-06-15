@@ -33,6 +33,8 @@ use help_icon;
 use single_button;
 use context_course;
 use pix_icon;
+use theme_config;
+
 
 defined('MOODLE_INTERNAL') || die;
 
@@ -43,7 +45,8 @@ defined('MOODLE_INTERNAL') || die;
  * @copyright  2022 Jonathan J.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class core_renderer extends \theme_boost\output\core_renderer {
+class core_renderer extends \theme_boost\output\core_renderer
+{
 
 
     /*
@@ -51,7 +54,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * always shown, even if no menu items are configured in the global
      * theme settings page.
      */
-    public function umboost_custom_menu($custommenuitems = '') {
+    public function umboost_custom_menu($custommenuitems = '')
+    {
         global $CFG;
 
         if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
@@ -63,8 +67,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $this->umboost_get_dashboard_for_custom_menu($custommenu);
 
         // Add course list for manager and admin (if you have the good capability).
-        if (has_capability('moodle/course:view', $this->page->context)
-        && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
+        if (
+            has_capability('moodle/course:view', $this->page->context)
+            && has_capability('moodle/course:viewhiddencourses', $this->page->context)
+        ) {
             $this->umboost_get_courselist_for_custom_menu($custommenu);
         }
 
@@ -74,7 +80,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
     /**
      * OVERRIDE this render to not show the lang menu !
      */
-    protected function render_custom_menu(custom_menu $menu) {
+    protected function render_custom_menu(custom_menu $menu)
+    {
 
         $content = '';
         foreach ($menu->get_children() as $item) {
@@ -87,7 +94,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
     /**
      * Add dashboard and my courses access to custom menu (all users).
      */
-    protected function umboost_get_dashboard_for_custom_menu(custom_menu $menu) {
+    protected function umboost_get_dashboard_for_custom_menu(custom_menu $menu)
+    {
         global $CFG;
 
         $mycourses = $this->page->navigation->get('mycourses');
@@ -105,12 +113,13 @@ class core_renderer extends \theme_boost\output\core_renderer {
             }
         }
     }
-    
+
 
     /**
      * add course list to custom menu (for admin).
      */
-    protected function umboost_get_courselist_for_custom_menu( $custommenu) {
+    protected function umboost_get_courselist_for_custom_menu($custommenu)
+    {
         // Fetch courses.
         $branchtitle = "courselist"; // Title that we can use with CSS.
         $branchlabel = get_string('courselist', 'theme_eadumboost');
@@ -129,7 +138,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * We want to show the custom menus as a list of links in the footer on small screens.
      * Just return the menu object exported so we can render it differently.
      */
-    public function custom_menu_flat() {
+    public function custom_menu_flat()
+    {
         global $CFG;
         $custommenuitems = '';
 
@@ -201,7 +211,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      *
      * @return string the editing button
      */
-   /* public function umboost_edit_button() {
+    /* public function umboost_edit_button() {
         global $PAGE, $COURSE;
 
         if (!$PAGE->user_allowed_editing() || $COURSE->id <= 1) {
@@ -247,10 +257,12 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @param boolean $onlytopleafnodes
      * @return boolean nodesskipped - True if nodes were skipped in building the menu
      */
-    protected function  build_action_menu_from_navigation(action_menu $menu,
-    navigation_node $node,
-    $indent = false,
-    $onlytopleafnodes = false) {
+    protected function  build_action_menu_from_navigation(
+        action_menu $menu,
+        navigation_node $node,
+        $indent = false,
+        $onlytopleafnodes = false
+    ) {
         $skipped = false;
 
         // Build an action menu based on the visible nodes from this navigation tree.
@@ -295,7 +307,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             }
 
             // ADD JJUPIN: We display the custom menu after "turn editing" / add jjupin.
-            if ($menuitem->key == "turneditingonoff" ) {
+            if ($menuitem->key == "turneditingonoff") {
                 $this->umboost_get_custom_action_menu_for_course_header($menu);
             }
         }
@@ -308,7 +320,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * - enrolmentmethods
      * - questionbank
      */
-    protected function umboost_get_custom_action_menu_for_course_header( $menu) {
+    protected function umboost_get_custom_action_menu_for_course_header($menu)   {
 
         // Participants (if the user has the good capacity).
         if (has_capability('report/participation:view',  $this->page->context)) {
@@ -332,7 +344,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
             $menu->add_secondary_action($customactionmenu);
         }
-
     }
 
 
@@ -344,7 +355,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @param \core_auth\output\login $form The renderable.
      * @return string
      */
-    public function render_login(\core_auth\output\login $form) {
+    public function render_login(\core_auth\output\login $form)
+    {
 
         global $CFG, $SITE;
 
@@ -368,7 +380,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             ['context' => context_course::instance(SITEID), "escape" => false]
         );
 
-        /* Add informaiton about the CAS (from GET) CAS or NOCAS. */
+        /* Add information about the CAS (from GET) CAS or NOCAS. */
         /* If we are in /login/ => we want CAS*/
         $cas = true;
         // If "NOCAS" => we want only manual login.
@@ -378,21 +390,28 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $context->cas = $cas;
 
         // Create URL: CAS / NOCAS / Angers.
-        $linkcas = new moodle_url('/login/index.php',
-        array('authCAS' => "CAS"));
+        $linkcas = new moodle_url(
+            '/login/index.php',
+            array('authCAS' => "CAS")
+        );
         $context->linkcas = $linkcas;
 
-        $linnocas = new moodle_url('/login/index.php',
-        array('authCAS' => "NOCAS"));
+        $linnocas = new moodle_url(
+            '/login/index.php',
+            array('authCAS' => "NOCAS")
+        );
         $context->linknocas = $linnocas;
 
-        // ISSUE WITH HTTPS: @todo, CHECK ALL THIS LATER !
-        // We force https (so no: new moodle_url('/auth/shibboleth/index.php').
-        $linkangers = new moodle_url('https://ead.univ-lemans.fr/moodle/auth/shibboleth/index.php');
-        $context->linkangers = $linkangers;
+        // Get theme config.
+        $theme = theme_config::load('eadumboost');
+        // If config "connexion_angers_users", we will send the information:
+        if ($theme->settings->connexion_angers_users) {
+            // ISSUE WITH HTTPS: @todo, CHECK ALL THIS LATER !
+            // We force https (so no: new moodle_url('/auth/shibboleth/index.php').
+            $linkangers = new moodle_url('https://ead.univ-lemans.fr/moodle/auth/shibboleth/index.php');
+            $context->linkangers = $linkangers;
+        }
 
         return $this->render_from_template('theme_eadumboost/loginform', $context);
     }
-
-
 }
