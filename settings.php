@@ -30,7 +30,7 @@ if ($ADMIN->fulltree) {
     $settings = new theme_boost_admin_settingspage_tabs('themesettingeadumboost', get_string('configtitle', 'theme_boost'));
     $page = new admin_settingpage('theme_boost_general', get_string('generalsettings', 'theme_boost'));
 
-    // Set plateform EADUM environment (to have extra CSS for test & pre prod).
+    // Set plateform environment (to have extra CSS for test & pre prod).
     $name = 'theme_eadumboost/platform_env';
     $title = get_string('platform_env', 'theme_eadumboost');
     $description = get_string('platform_env_desc', 'theme_eadumboost');
@@ -53,6 +53,19 @@ if ($ADMIN->fulltree) {
     $choices = array(
         0 => "No",
         1 => "Yes"
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // Show "course list" in navbar for everybody or just admin/manager (UMTICE: all, EADUM: manager).
+    $name = 'theme_eadumboost/course_list_navbar';
+    $title = get_string('course_list_navbar', 'theme_eadumboost');
+    $description = get_string('course_list_navbar', 'theme_eadumboost');
+    $default = 0;
+    $choices = array(
+        'everybody' => 'Everybody (UMTICE)',
+        'manager' => 'Manager (EADUM)'
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
