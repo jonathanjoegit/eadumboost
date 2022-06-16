@@ -60,7 +60,8 @@
         content: "\f19d"; /* fontawesome unicode */
     }
     a[title="courselist"]:before { 
-        content: "\f03a"; /* fontawesome unicode */
+        content: "\f0e8"; /* fontawesome unicode f0e8 f0ca */
+        padding-right: 0.5rem;
     }
     @media (max-width: $screen-xl-min) {
         font-size:0px;

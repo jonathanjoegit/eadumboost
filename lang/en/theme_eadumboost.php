@@ -15,17 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
-* Strings for theme, language 'en'
-*
-* @package    theme_eadumboost
-* @copyright  2020 Jonathan J. - Le Mans Université
-* @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+ * Strings for theme, language 'en'
+ *
+ * @package    theme_eadumboost
+ * @copyright  2020 Jonathan J. - Le Mans Université
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 /* PLUGIN NAME */
 $string['pluginname'] = 'EADUMBOOST';
 $string['choosereadme'] = 'Theme EADUMBOOST is a child theme of Boost for Le Mans Université';
 $string['configtitle'] = 'EADUMBOOST';
+$string['configtabtitle'] = 'EADUMBOOST';
+
 
 /* LOGIN. */
 $string['connect-form-welcome'] = 'Welcome!';

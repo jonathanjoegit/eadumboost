@@ -25,6 +25,8 @@
 $string['pluginname'] = 'EADUMBOOST';
 $string['choosereadme'] = 'Theme EADUMBOOST is a child theme of Boost for Le Mans Université';
 $string['configtitle'] = 'EADUMBOOST';
+$string['configtabtitle'] = 'EADUMBOOST';
+
 
 /* LOGIN. */
 $string['connect-form-welcome'] = 'Bienvenue !';

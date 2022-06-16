@@ -65,10 +65,18 @@ class core_renderer extends \theme_boost\output\core_renderer {
         // Add dahsboard and my courses access.
         $this->umboost_get_dashboard_for_custom_menu($custommenu);
 
-        // Add course list for manager and admin (if you have the good capability).
+        // Show the "course list" button in navbar.
+        // Could be for everybody or just manager (depending the settings of the theme)
+        // Get theme config.
+        $theme = theme_config::load('eadumboost');
+        // If setting for everybody OR manager we show the button
         if (
-            has_capability('moodle/course:view', $this->page->context)
-            && has_capability('moodle/course:viewhiddencourses', $this->page->context)
+            $theme->settings->course_list_navbar == "everybody"
+            || (
+                // We consider "manager" sombody with this capacities.
+                has_capability('moodle/course:view', $this->page->context)
+                && has_capability('moodle/course:viewhiddencourses', $this->page->context)
+            )
         ) {
             $this->umboost_get_courselist_for_custom_menu($custommenu);
         }
@@ -99,7 +107,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         if (isloggedin() && $mycourses && $mycourses->has_children()) {
             $branchtitle = "dashboard"; // Title that we can use with CSS.
-            $branchlabel = get_string('myhome');
+            $branchlabel = get_string('mycourses');
             $branchurl   = new moodle_url('/course/index.php');
             $branchsort  = 1;
 
@@ -398,7 +406,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         // Get theme config.
         $theme = theme_config::load('eadumboost');
-        // If config "connexion_angers_users", we will send the information:
+        // If config "connexion_angers_users", we will send the information.
         if ($theme->settings->connexion_angers_users) {
             // ISSUE WITH HTTPS: @todo, CHECK ALL THIS LATER !
             // We force https (so no: new moodle_url('/auth/shibboleth/index.php').
