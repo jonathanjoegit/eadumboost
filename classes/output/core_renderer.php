@@ -45,8 +45,8 @@ defined('MOODLE_INTERNAL') || die;
  * @copyright  2022 Jonathan J.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class core_renderer extends \theme_boost\output\core_renderer
-{
+class core_renderer extends \theme_boost\output\core_renderer {
+
 
 
     /*
@@ -54,8 +54,7 @@ class core_renderer extends \theme_boost\output\core_renderer
      * always shown, even if no menu items are configured in the global
      * theme settings page.
      */
-    public function umboost_custom_menu($custommenuitems = '')
-    {
+    public function umboost_custom_menu($custommenuitems = '') {
         global $CFG;
 
         if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
@@ -80,8 +79,7 @@ class core_renderer extends \theme_boost\output\core_renderer
     /**
      * OVERRIDE this render to not show the lang menu !
      */
-    protected function render_custom_menu(custom_menu $menu)
-    {
+    protected function render_custom_menu(custom_menu $menu) {
 
         $content = '';
         foreach ($menu->get_children() as $item) {
@@ -94,8 +92,7 @@ class core_renderer extends \theme_boost\output\core_renderer
     /**
      * Add dashboard and my courses access to custom menu (all users).
      */
-    protected function umboost_get_dashboard_for_custom_menu(custom_menu $menu)
-    {
+    protected function umboost_get_dashboard_for_custom_menu(custom_menu $menu) {
         global $CFG;
 
         $mycourses = $this->page->navigation->get('mycourses');
@@ -118,8 +115,7 @@ class core_renderer extends \theme_boost\output\core_renderer
     /**
      * add course list to custom menu (for admin).
      */
-    protected function umboost_get_courselist_for_custom_menu($custommenu)
-    {
+    protected function umboost_get_courselist_for_custom_menu($custommenu) {
         // Fetch courses.
         $branchtitle = "courselist"; // Title that we can use with CSS.
         $branchlabel = get_string('courselist', 'theme_eadumboost');
@@ -138,8 +134,7 @@ class core_renderer extends \theme_boost\output\core_renderer
      * We want to show the custom menus as a list of links in the footer on small screens.
      * Just return the menu object exported so we can render it differently.
      */
-    public function custom_menu_flat()
-    {
+    public function custom_menu_flat() {
         global $CFG;
         $custommenuitems = '';
 
@@ -199,12 +194,12 @@ class core_renderer extends \theme_boost\output\core_renderer
         $header->courseheader = $this->course_header();
         $header->headeractions = $PAGE->get_header_actions();
 
-        // ADD JJUPIN: add "edit mode" in course. 
+        // ADD JJUPIN: add "edit mode" in course.
         //$header->editbutton = $this->umboost_edit_button();
-        // ADD JJUPIN: eadumboost template ATTENTION TEMPLATE SUPP DE LA NOUVELLE VERSION !!! 
+        // ADD JJUPIN: eadumboost template ATTENTION TEMPLATE SUPP DE LA NOUVELLE VERSION !!!
         return $this->render_from_template('theme_eadumboost/full_header', $header);
     }
-	*/
+    */
 
     /**
      * Add editing button in a course
@@ -320,7 +315,7 @@ class core_renderer extends \theme_boost\output\core_renderer
      * - enrolmentmethods
      * - questionbank
      */
-    protected function umboost_get_custom_action_menu_for_course_header($menu)   {
+    protected function umboost_get_custom_action_menu_for_course_header($menu) {
 
         // Participants (if the user has the good capacity).
         if (has_capability('report/participation:view',  $this->page->context)) {
@@ -355,8 +350,7 @@ class core_renderer extends \theme_boost\output\core_renderer
      * @param \core_auth\output\login $form The renderable.
      * @return string
      */
-    public function render_login(\core_auth\output\login $form)
-    {
+    public function render_login(\core_auth\output\login $form) {
 
         global $CFG, $SITE;
 
