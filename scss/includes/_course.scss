@@ -2,7 +2,7 @@
 -------------------------*/
 
 // Course Header
-.context-header-settings-menu {
+/*.context-header-settings-menu {
     display: flex;
     align-content: center;
     align-items: center;
@@ -26,4 +26,11 @@
             font-size: 40px;
         }
     }
+}*/
+
+// correction bug avec attestoodle tool (a.btn:link, a.btn:visited { color: #555; )
+
+a.btn:link,
+a.btn:visited {
+  color: #fff;
 }
