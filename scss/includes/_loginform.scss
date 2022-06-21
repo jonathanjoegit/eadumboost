@@ -26,14 +26,13 @@
         .button-connect-login {
             a {
                 font-size: 1.5em;
-
+                color: $whiteText;
                 margin-top: .8em;
                 margin-bottom: .8em;
                 img {
                     width: auto;
-                    height: 1.6em;
+                    height: 1.2em;
                 }
-
                 @media (max-width: $screen-lg-min) {
                     font-size: 1.3em;
                 }
@@ -44,21 +43,25 @@
         }
         .button-connect-UM a {
             font-weight: 600;
-
-            color: $whiteText;
-            border: 2px solid $white;
             background: $linkColor1;
-
+            img {
+                width: auto;
+                height: 2em;
+            }
             &:hover {
                 background: darken($linkColor1, 8%);
             }
+        }
+        .button-connect-angers a{
+            background: $colorAngers;
+            &:hover {
+                background: darken($colorAngers, 8%);
+            }
+       
         }
         form {
             margin-bottom: 2em;
         }
     }
-    .connect-angers img {
-        width: auto;
-        height: 100px;
-    }
+    
 }

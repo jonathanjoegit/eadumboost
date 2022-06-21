@@ -46,6 +46,17 @@
 
                             <h3>{{#str}} connect-form-or, theme_eadumboost {{/str}}</h3>
 
+                            <div class="button-connect-login button-connect-angers">
+                                <a href="{{ linkangers }}" title="Other user" class="btn btn-secondary btn-block">
+                                    {{# pix }} theme_eadumboost_univ-angers, theme_eadumboost, Le Mans
+                                    Université{{/ pix }}
+                                    {{#str}} connect-angers-button, theme_eadumboost {{/str}}
+                                </a>
+                            </div>
+
+
+                            <h3>{{#str}} connect-form-or, theme_eadumboost {{/str}}</h3>
+
                             <div class="button-connect-login">
                                 <a href="{{ linknocas }}" title="Other user" class="btn btn-secondary btn-block">
                                     {{#str}} connect-other-users, theme_eadumboost {{/str}}
@@ -53,6 +64,7 @@
                             </div>
                         </div>
                         {{/cas}}
+
 
                         {{! IF NOT CAS : manual and other connexion }}
                         {{^cas}}
@@ -97,25 +109,8 @@
                                 </button>
                             </form>
                         </div>
-
-                        {{! If config "login_connexion_angers_users": }}
-                        {{#linkangers}}
-                        <div class="col-lg-10 connect-angers p-2 text-center">
-                            <hr class="mt-2 mb-4" />
-                            {{# pix }} theme_eadumboost_univ-angers, theme_eadumboost,
-                            Université Angers{{/ pix }}
-                            <h5 class="p-2">
-                                {{#str}} connect-angers-text, theme_eadumboost {{/str}}
-                            </h5>
-                            <div class="button-connect-login">
-                                <a href="{{ linkangers }}" title="Other user" class="btn btn-secondary btn-block">
-                                    {{#str}} connect-angers-button, theme_eadumboost {{/str}}
-                                </a>
-                            </div>
-                        </div>
-                        {{/linkangers}}
-
                         {{/cas}}
+
 
                         {{! Help for the login: }}
                         <div class="col-lg-10 mt-3 mb-2">
