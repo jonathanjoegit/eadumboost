@@ -24,10 +24,10 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// Version (YYYYMMDDrr where rr is the release number)
+// Version (YYYYMMDDrr where rr is the release number).
 $plugin->version   = 2022062000;
 
-$plugin->requires  = 2020110900; // require moodle 3.10
+$plugin->requires  = 2019121200; // Require moodle 3.8.
 $plugin->component = 'theme_eadumboost';
 $plugin->release  = 'Theme EADUMBOOST v2 Moodle 3.10';
 
