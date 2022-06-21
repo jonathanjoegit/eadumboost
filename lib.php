@@ -55,7 +55,10 @@ function theme_eadumboost_get_main_scss_content($theme) {
     } else if ($value == "Test-annualisation") {
         $custom .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_testannualisation.scss');
     }
-
+    if ($theme->settings->course_simplify_navdrawer ) {
+        // Theme setting: course_simplify_navdrawer => add scss.
+        $custom .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/course_simplify_navdrawer.scss');
+    }
     // Combine them together.
     return $scss . "\n" . $custom;
 }
@@ -74,8 +77,6 @@ function theme_eadumboost_extend_navigation($navigation) {
     if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
         $homenode->showinflatnavigation = false;
     }
-    // Enlever "Privat files".
-    // Fait en CSS (display:none;) sinon c'est un peu galère (à voir plus tard).
 
     // Add plugin "tuteur".
     // Vérifier si l'user à le droit d'afficher le rapport Tuteur.

@@ -1,0 +1,8 @@
+// Simplify the nav-drawer in a course:
+// --- --- --- --- --- --- --- --- --- --- ---
+
+body.pagelayout-course{
+    nav[aria-label="Site"]{
+        display: none;
+    }
+}

@@ -27,8 +27,16 @@ defined('MOODLE_INTERNAL') || die();
 if ($ADMIN->fulltree) {
 
     // Boost provides a nice setting page which splits settings onto separate tabs. We want to use it here.
-    $settings = new theme_boost_admin_settingspage_tabs('themesettingeadumboost', get_string('configtitle', 'theme_boost'));
-    $page = new admin_settingpage('theme_boost_general', get_string('generalsettings', 'theme_boost'));
+    $settings = new theme_boost_admin_settingspage_tabs('themesettingeadumboost', get_string('configtitle', 'theme_eadumboost'));
+
+
+    /*
+    * ----------------------
+    * General settings tab
+    * ----------------------
+    */
+    $page = new admin_settingpage('theme_eadumboost_general', get_string('general_settings', 'theme_eadumboost'));
+
 
     // Set plateform environment (to have extra CSS for test & pre prod).
     $name = 'theme_eadumboost/platform_env';
@@ -46,7 +54,7 @@ if ($ADMIN->fulltree) {
     $page->add($setting);
 
     // Show a block for Angers Université users in the login page.
-    $name = 'theme_eadumboost/connexion_angers_users';
+    $name = 'theme_eadumboost/login_connexion_angers_users';
     $title = get_string('title_angers_users', 'theme_eadumboost');
     $description = get_string('text_angers_user', 'theme_eadumboost');
     $default = 0;
@@ -59,10 +67,10 @@ if ($ADMIN->fulltree) {
     $page->add($setting);
 
     // Show "course list" in navbar for everybody or just admin/manager (UMTICE: all, EADUM: manager).
-    $name = 'theme_eadumboost/course_list_navbar';
-    $title = get_string('course_list_navbar', 'theme_eadumboost');
-    $description = get_string('course_list_navbar', 'theme_eadumboost');
-    $default = 0;
+    $name = 'theme_eadumboost/navbar_course_list';
+    $title = get_string('navbar_course_list', 'theme_eadumboost');
+    $description = get_string('navbar_text_course_list_navbar', 'theme_eadumboost');
+    $default = 'manager';
     $choices = array(
         'everybody' => 'Everybody (UMTICE)',
         'manager' => 'Manager (EADUM)'
@@ -71,6 +79,32 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
+    // Add the page.
+    $settings->add($page);
 
+
+    /*
+    * ----------------------
+    * Course settings tab
+    * ----------------------
+    */
+    $page = new admin_settingpage('theme_eadumboost_course', get_string('course_settings', 'theme_eadumboost'));
+
+    // Simplify the nav-drawer in the context "course" (hide that is not connected with the course).
+    // For now, it's a scss file : course_simplify_navdrawer.scss.
+    $name = 'theme_eadumboost/course_simplify_navdrawer';
+    $title = get_string('course_simplify_navdrawer', 'theme_eadumboost');
+    $description = get_string('course_text_simplify_navdrawer', 'theme_eadumboost');
+    $default = 0;
+    $choices = array(
+        0 => "No",
+        1 => "Yes"
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+
+    // Add the page.
     $settings->add($page);
 }

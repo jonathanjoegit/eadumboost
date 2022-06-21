@@ -1,8 +1,8 @@
 /** GENERAL
 -------------------------*/
-html {
+/*html {
     //background-color: $darkBackground;
-}
+}*/
 a {
     color: $linkColor1;
 }
@@ -14,5 +14,5 @@ a {
 
 /* HACK because some buttons had gray color, prioryty problem, so i add #id. */
 #page .btn-primary {
-    color: $whiteText;
+    //color: $whiteText;
 }

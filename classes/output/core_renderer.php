@@ -71,7 +71,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $theme = theme_config::load('eadumboost');
         // If setting for everybody OR manager we show the button
         if (
-            $theme->settings->course_list_navbar == "everybody"
+            $theme->settings->navbar_course_list == "everybody"
             || (
                 // We consider "manager" sombody with this capacities.
                 has_capability('moodle/course:view', $this->page->context)
@@ -436,8 +436,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         // Get theme config.
         $theme = theme_config::load('eadumboost');
-        // If config "connexion_angers_users", we will send the information.
-        if ($theme->settings->connexion_angers_users) {
+        // If config "login_connexion_angers_users", we will send the information.
+        if ($theme->settings->login_connexion_angers_users) {
             // ISSUE WITH HTTPS: @todo, CHECK ALL THIS LATER !
             // We force https (so no: new moodle_url('/auth/shibboleth/index.php').
             $linkangers = new moodle_url('https://ead.univ-lemans.fr/moodle/auth/shibboleth/index.php');

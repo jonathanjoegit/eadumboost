@@ -27,17 +27,17 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once(__DIR__ . '/lib.php');
 
-// Theme name:
+// Theme name.
 $THEME->name = 'eadumboost';
-// Inherit from parent theme - Boost:
+// Inherit from parent theme - Boost.
 $THEME->parents = ['boost'];
-// Styles:
+// Styles.
 $THEME->scss = function($theme) {
     return theme_eadumboost_get_main_scss_content($theme);
 };
-// Theme Layout EADUM (≠ from boost)
+// Theme Layout EADUM (≠ from boost).
 $THEME->layouts = [
-  // The site home page:
+  // The site home page.
   'frontpage' => array(
       'file' => 'home.php',
       'regions' => array('side-pre'),
@@ -47,15 +47,14 @@ $THEME->layouts = [
 ];
 
 // The following is a copy paste from boost "/config.php" page, no other customisation.
-// Bottom of the file:
+// Bottom of the file.
 $THEME->sheets = [];
 $THEME->editor_sheets = [];
 $THEME->editor_scss = ['editor'];
 $THEME->usefallback = true;
 
-// Top of the file:
+// Top of the file.
 $THEME->enable_dock = false;
-$THEME->csstreepostprocessor = 'theme_boost_css_tree_post_processor';
 $THEME->extrascsscallback = 'theme_boost_get_extra_scss';
 $THEME->prescsscallback = 'theme_boost_get_pre_scss';
 $THEME->precompiledcsscallback = 'theme_boost_get_precompiled_css';

@@ -24,8 +24,7 @@
 
 $string['pluginname'] = 'EADUMBOOST';
 $string['choosereadme'] = 'Theme EADUMBOOST is a child theme of Boost for Le Mans Université';
-$string['configtitle'] = 'EADUMBOOST';
-$string['configtabtitle'] = 'EADUMBOOST';
+$string['configtitle'] = 'Settings EADUMBOOST';
 
 
 /* LOGIN. */
@@ -162,10 +161,14 @@ Ce site web est optimisé pour les dernières mises à jour des navigateurs web 
 Pensez à mettre à jour votre navigateur. Vous pouvez également y accéder depuis votre tablette et votre mobile. repri';
 
 // Admin.
-$string['generalsettings'] = 'Paramètres';
+$string['general_settings'] = 'General';
+$string['course_settings'] = 'Cours';
 $string['platform_env'] = 'Environnement';
 $string['platform_env_desc'] = 'Sélection de l\'environnement de la plate-forme. Cette sélection change le logo du thème pour montrer qu\'il ne s\'agit pas de la plateforme "Production".';
 $string['title_angers_users'] = 'Connexion avec Angers';
 $string['text_angers_user'] = 'Afficher un bloc (ou non) pour les utilisateurs d\'Angers Université dans la page de connexion';
-$string['course_list_navbar'] = 'Afficher la "liste des cours" dans la barre de navigation pour tous les utilisateurs ou les managers (UMTICE : everybody, EADUM : manager)';
+$string['navbar_course_list'] = 'Afficher la "liste des cours" dans la navbar';
+$string['navbar_text_course_list_navbar'] = 'Afficher la "liste des cours" dans la barre de navigation pour tous les utilisateurs ou les managers (UMTICE : everybody, EADUM : manager)';
+$string['course_simplify_navdrawer'] = 'Simplifier le nav-drawer dans les cours';
+$string['course_text_simplify_navdrawer'] = 'Simplifier le nav-drawer dans le contexte "cours" (cacher ce qui n\'est pas lié au cours)';
 
