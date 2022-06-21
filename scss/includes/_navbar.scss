@@ -56,14 +56,18 @@
     a:hover:before{
         color: $whiteText;
     }
-    a[title="dashboard"]:before { 
+    a[title="Dashboard"]:before, a[title="Tableau de bord"]:before { 
+        padding-right: 0.5rem;
+        content: "\F0E4"; /* fontawesome unicode */
+    }
+    a[title="My courses"]:before, a[title="Mes cours"]:before { 
         content: "\f19d"; /* fontawesome unicode */
     }
-    a[title="courselist"]:before { 
+    a[title="Course list"]:before, a[title="Tous les cours"]:before { 
         content: "\f0e8"; /* fontawesome unicode f0e8 f0ca */
         padding-right: 0.5rem;
     }
-    @media (max-width: $screen-xl-min) {
+    @media (max-width: $screen-xxl-min) {
         font-size:0px;
     }
 

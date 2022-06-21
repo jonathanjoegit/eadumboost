@@ -27,6 +27,12 @@ $string['pluginname'] = 'EADUMBOOST';
 $string['choosereadme'] = 'Theme EADUMBOOST is a child theme of Boost for Le Mans Université';
 $string['configtitle'] = 'Settings EADUMBOOST';
 
+/* navbar */
+$string['dashboard'] = 'Dashboard'; /* Attention : utilisé en css */
+$string['mycourses'] = 'My courses';  /* Attention : utilisé en css */
+$string['courselist'] = 'Course list';  /* Attention : utilisé en css */
+
+
 /* LOGIN. */
 $string['connect-form-welcome'] = 'Welcome!';
 $string['connect-form-title'] = 'To continue, please log in:';
@@ -47,7 +53,6 @@ $string['assistanceTP'] = 'Assistance';
 $string['FAQ'] = 'FAQ';
 $string['espaceformation'] = 'Staff training';
 $string['creerespacecours'] = 'New course creation form';
-$string['courselist'] = 'Course list';
 $string['mail'] = 'Mailbox LMU';
 
 /* Connections anonymes. */

@@ -69,7 +69,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         // Could be for everybody or just manager (depending the settings of the theme)
         // Get theme config.
         $theme = theme_config::load('eadumboost');
-        // If setting for everybody OR manager we show the button
+        // If setting for everybody OR manager we show the button.
         if (
             $theme->settings->navbar_course_list == "everybody"
             || (
@@ -103,11 +103,20 @@ class core_renderer extends \theme_boost\output\core_renderer {
     protected function umboost_get_dashboard_for_custom_menu(custom_menu $menu) {
         global $CFG;
 
+        // Add dashboard shortcut.
+        $branchtitle = get_string('dashboard', 'theme_eadumboost');; // Title that we can use with CSS.
+        $branchlabel = get_string('dashboard', 'theme_eadumboost');
+        $branchurl   = new moodle_url('/');
+        $branchsort  = 0;
+
+        $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+
+        // Add my courses shortcut.
         $mycourses = $this->page->navigation->get('mycourses');
 
         if (isloggedin() && $mycourses && $mycourses->has_children()) {
-            $branchtitle = "dashboard"; // Title that we can use with CSS.
-            $branchlabel = get_string('mycourses');
+            $branchtitle = get_string('mycourses', 'theme_eadumboost' ); // Title that we can use with CSS.
+            $branchlabel = get_string('mycourses', 'theme_eadumboost' );
             $branchurl   = new moodle_url('/course/index.php');
             $branchsort  = 1;
 
@@ -125,7 +134,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     protected function umboost_get_courselist_for_custom_menu($custommenu) {
         // Fetch courses.
-        $branchtitle = "courselist"; // Title that we can use with CSS.
+        $branchtitle = get_string('courselist', 'theme_eadumboost'); // Title that we can use with CSS.
         $branchlabel = get_string('courselist', 'theme_eadumboost');
         $branchurl = new moodle_url('/course/index.php');
         $branchsort = 2;
