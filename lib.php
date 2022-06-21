@@ -73,15 +73,23 @@ function theme_eadumboost_extend_navigation($navigation) {
     global $PAGE, $CFG, $COURSE;
     require_once($CFG->libdir . '/completionlib.php');
 
-    // Enlever "Home".
+    static $theme;
+    if (empty($theme)) {
+        $theme = theme_config::load('eadumboost');
+    }
+
+    // Enlever "Home" (accueil non connecté, utile vu qu'on ne cache des blocs qu'en CSS après).
     if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
         $homenode->showinflatnavigation = false;
     }
 
-    // Add plugin "tuteur".
+    // Add plugin "tuteur" (setting course_rapport_tuteur).
     // Vérifier si l'user à le droit d'afficher le rapport Tuteur.
     $context = $PAGE->context;
-    if (has_capability('report/tuteur:view', $context)) {
+    if (
+        has_capability('report/tuteur:view', $context)
+        && $theme->settings->course_rapport_tuteur
+        ) {
         // S'il y a des activités.
         $completion = new completion_info($COURSE);
         $activities = $completion->get_activities();
@@ -113,8 +121,12 @@ function theme_eadumboost_extend_navigation($navigation) {
         }
     }
 
-    // Add edition mode for admin (to save time).
-    if ($PAGE->user_allowed_editing() && $PAGE->pagelayout == 'course') {
+    // Add edition mode in nav drawer (setting : course_editing_mode_navdrawer).
+    if (
+        $PAGE->user_allowed_editing()
+        && $PAGE->pagelayout == 'course'
+        && $theme->settings->course_editing_mode_navdrawer
+    ) {
         $url = new moodle_url($PAGE->url);
         $url->param('sesskey', sesskey());
         $title = get_string('turneditingoff', 'core');

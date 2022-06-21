@@ -104,7 +104,34 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
+     // Add acess to "rapport tuteur" in the nav-drawer.
+     $name = 'theme_eadumboost/course_rapport_tuteur';
+     $title = get_string('course_rapport_tuteur', 'theme_eadumboost');
+     $description = get_string('course_text_rapport_tuteur', 'theme_eadumboost');
+     $default = 0;
+     $choices = array(
+         0 => "No",
+         1 => "Yes"
+     );
+     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+     $setting->set_updatedcallback('theme_reset_all_caches');
+     $page->add($setting);
 
-    // Add the page.
-    $settings->add($page);
+     // Add acess to "editing mode" in the nav-drawer.
+     $name = 'theme_eadumboost/course_editing_mode_navdrawer';
+     $title = get_string('course_editing_mode_navdrawer', 'theme_eadumboost');
+     $description = get_string('course_text_editing_mode_navdrawer', 'theme_eadumboost');
+     $default = 0;
+     $choices = array(
+         0 => "No",
+         1 => "Yes"
+     );
+     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+     $setting->set_updatedcallback('theme_reset_all_caches');
+     $page->add($setting);
+
+
+
+     // Add the page.
+     $settings->add($page);
 }

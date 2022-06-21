@@ -160,15 +160,21 @@ $string['txthome4'] = '<H3>Accessibilité :</H3>
 Ce site web est optimisé pour les dernières mises à jour des navigateurs web Firefox et Chrome.
 Pensez à mettre à jour votre navigateur. Vous pouvez également y accéder depuis votre tablette et votre mobile. repri';
 
-// Admin.
+// Admin settings.
 $string['general_settings'] = 'General';
 $string['course_settings'] = 'Cours';
 $string['platform_env'] = 'Environnement';
 $string['platform_env_desc'] = 'Sélection de l\'environnement de la plate-forme. Cette sélection change le logo du thème pour montrer qu\'il ne s\'agit pas de la plateforme "Production".';
 $string['title_angers_users'] = 'Connexion avec Angers';
-$string['text_angers_user'] = 'Afficher un bloc (ou non) pour les utilisateurs d\'Angers Université dans la page de connexion';
-$string['navbar_course_list'] = 'Afficher la "liste des cours" dans la navbar';
-$string['navbar_text_course_list_navbar'] = 'Afficher la "liste des cours" dans la barre de navigation pour tous les utilisateurs ou les managers (UMTICE : everybody, EADUM : manager)';
+$string['text_angers_user'] = 'Afficher un bloc pour les utilisateurs d\'Angers Université dans la page de connexion';
+$string['navbar_course_list'] = 'Afficher la "Tous les cours" dans la navbar';
+$string['navbar_text_course_list_navbar'] = 'Accès à la liste des cours depuis la barre de navigation pour tous les utilisateurs ou seulement les managers (UMTICE : everybody, EADUM : manager)';
+
 $string['course_simplify_navdrawer'] = 'Simplifier le nav-drawer dans les cours';
 $string['course_text_simplify_navdrawer'] = 'Simplifier le nav-drawer dans le contexte "cours" (cacher ce qui n\'est pas lié au cours)';
 
+$string['course_rapport_tuteur'] = 'Rapport Tuteur :';
+$string['course_text_rapport_tuteur'] = 'Ajouter l\'accès dans le nav-drawer d\'un cours qui utilise le suivi d\'achèvement';
+
+$string['course_editing_mode_navdrawer'] = 'Bouton mode édition: ';
+$string['course_text_editing_mode_navdrawer'] = 'Ajouter l\'accès dans le nav-drawer';
