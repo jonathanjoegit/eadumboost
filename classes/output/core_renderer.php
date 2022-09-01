@@ -47,8 +47,6 @@ defined('MOODLE_INTERNAL') || die;
  */
 class core_renderer extends \theme_boost\output\core_renderer {
 
-
-
     /*
      * Overriding the custom_menu function ensures the custom menu is
      * always shown, even if no menu items are configured in the global
@@ -130,7 +128,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
 
     /**
-     * add course list to custom menu (for admin).
+     * add course list to custom menu.
      */
     protected function umboost_get_courselist_for_custom_menu($custommenu) {
         // Fetch courses.
@@ -212,78 +210,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
 
-    /** Overriding! (check moodle 3.8 ok)
-     * Wrapper for header elements => QUEST CE QUON FAIT ?
-     *
-     * @todo: CLEAN OU Documenter la fonction + utiliser son parent.
-     * @return string HTML to display the main header.
-     */
-    /* public function full_header() {
-        global $PAGE;
-
-        if ($PAGE->include_region_main_settings_in_header_actions() && !$PAGE->blocks->is_block_present('settings')) {
-            // Only include the region main settings if the page has requested it and it doesn't already have
-            // the settings block on it. The region main settings are included in the settings block and
-            // duplicating the content causes behat failures.
-            $PAGE->add_header_action(html_writer::div(
-                $this->region_main_settings_menu(),
-                'd-print-none',
-                ['id' => 'region-main-settings-menu']
-            ));
-        }
-
-        $header = new stdClass();
-        $header->settingsmenu = $this->context_header_settings_menu();
-        $header->contextheader = $this->context_header();
-        $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
-        $header->navbar = $this->navbar();
-        $header->pageheadingbutton = $this->page_heading_button();
-        $header->courseheader = $this->course_header();
-        $header->headeractions = $PAGE->get_header_actions();
-
-        // ADD JJUPIN: add "edit mode" in course.
-        //$header->editbutton = $this->umboost_edit_button();
-        // ADD JJUPIN: eadumboost template ATTENTION TEMPLATE SUPP DE LA NOUVELLE VERSION !!!
-        return $this->render_from_template('theme_eadumboost/full_header', $header);
-    }
-    */
-
-    /**
-     * Add editing button in a course
-     *
-     * @return string the editing button
-     */
-    /* public function umboost_edit_button() {
-        global $PAGE, $COURSE;
-
-        if (!$PAGE->user_allowed_editing() || $COURSE->id <= 1) {
-            return '';
-        }
-        if ($PAGE->pagelayout == 'course') {
-            $url = new moodle_url($PAGE->url);
-            $url->param('sesskey', sesskey());
-            if ($PAGE->user_is_editing()) {
-                $url->param('edit', 'off');
-                $btn = 'btn-danger editingbutton';
-                $title = get_string('turneditingoff', 'core');
-                $icon = 'fa-power-off';
-            } else {
-                $url->param('edit', 'on');
-                $btn = 'btn-success editingbutton';
-                $title = get_string('turneditingon', 'core');
-                $icon = 'fa-edit';
-            }
-            return html_writer::tag('a', html_writer::start_tag('i', array(
-                'class' => $icon . ' fa fa-fw'
-            )) . html_writer::end_tag('i') . $title , array(
-                'href' => $url,
-                'class' => 'btn edit-btn ' . $btn,
-                'data-tooltip' => "tooltip",
-                'data-placement' => "bottom",
-                'title' => $title,
-            ));
-        }
-    }*/
+   
+   
 
 
     /**

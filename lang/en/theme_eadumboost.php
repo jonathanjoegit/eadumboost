@@ -32,7 +32,6 @@ $string['dashboard'] = 'Dashboard'; /* Attention : utilisé en css */
 $string['mycourses'] = 'My courses';  /* Attention : utilisé en css */
 $string['courselist'] = 'Course list';  /* Attention : utilisé en css */
 
-
 /* LOGIN. */
 $string['connect-form-welcome'] = 'Welcome!';
 $string['connect-form-title'] = 'To continue, please log in:';

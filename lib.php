@@ -26,7 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot.'/theme/boost/lib.php');
 
-
 /**
  * Returns the main SCSS content.
  *
@@ -62,8 +61,6 @@ function theme_eadumboost_get_main_scss_content($theme) {
     // Combine them together.
     return $scss . "\n" . $custom;
 }
-
-
 
 /**
  * Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
@@ -149,5 +146,4 @@ function theme_eadumboost_extend_navigation($navigation) {
         $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
         $node = $coursenode->children->add($nodeedit);
     }
-
 }
